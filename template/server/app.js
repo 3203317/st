@@ -1,6 +1,6 @@
 /*!
  * speedt
- * Copyright(c) 2015 speedt <3203317@qq.com>
+ * Copyright(c) 2015 speedt <13837186852@qq.com>
  * BSD 3 Licensed
  */
 'use strict';
@@ -24,7 +24,8 @@ app.createApp(null, function(){
 	var self = this;
 
 	self.configure('production|development', function(){
-		// TODO
+		self.filter(app.filters.time());
+		self.filter(app.filters.timeout());
 	});
 
 	self.configure('production|development', 'connector', function(){
