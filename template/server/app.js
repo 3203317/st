@@ -24,12 +24,12 @@ speedt.createApp(null, function(){
 	var self = this;
 
 	self.configure('production|development', function(){
-		self.filter(speedt.filters.time());
-		self.filter(speedt.filters.timeout());
+		this.filter(speedt.filters.time());
+		this.filter(speedt.filters.timeout());
 	});
 
 	self.configure('production|development', 'connector', function(){
-		speedt.set('', {
+		this.set('connectorConfig', {
 			connector : speedt.connectors.hyxconnector,
 			heartbeat : 3,
 			useDict : true,

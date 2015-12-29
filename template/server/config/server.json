@@ -1,11 +1,11 @@
 {
 	"development": {
-		"serverType": "sessionor",
+		"serverType": "connector",
 		"id": "sessionor-server-1",
 		"host": "127.0.0.1",
 		"port": 5005
 	}, "production": {
-		"serverType": "sessionor",
+		"serverType": "connector",
 		"id": "sessionor-server-1",
 		"host": "127.0.0.1",
 		"port": 5005
