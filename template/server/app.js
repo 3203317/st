@@ -26,7 +26,7 @@ speedt.createApp(null, function(){
 	self.configure('production|development', function(){
 		this.filter(speedt.filters.time());
 		this.filter(speedt.filters.timeout());
-	});
+	}); // END
 
 	self.configure('production|development', 'connector', function(){
 		this.set('connectorConfig', {
@@ -34,8 +34,8 @@ speedt.createApp(null, function(){
 			heartbeat : 3,
 			useDict : true,
 			useProtobuf : true
-		});
-	});
+		}); // END
+	}); // END
 
 	// TODO
 	self.start(function (err){
