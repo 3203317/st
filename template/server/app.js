@@ -15,9 +15,9 @@ process.on('uncaughtException', function (err){
 });
 
 process.on('exit', function (code){
-	if(0 === code) return console.warn('[WARN ] [%s] process exit.'.yellow, utils.format());
+	if(0 === code) return console.warn('[%s] process exit.'.yellow, utils.format());
 	// TODO
-	console.error('[ERROR] [%s] process exit with code: %s.', utils.format(), code);
+	console.error('[%s] process exit with code: %s.'.red, utils.format(), code);
 });
 
 speedt.createApp(null, function(){
@@ -39,6 +39,6 @@ speedt.createApp(null, function(){
 
 	// TODO
 	self.start(function (err){
-		if(err) return console.error('[ERROR] [%s] app start error: %j.'.red, utils.format(), err.message);
+		if(err) return console.error('[%s] app start error: %j.'.red, utils.format(), err.message);
 	});
 });
