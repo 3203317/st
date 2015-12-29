@@ -8,7 +8,7 @@
 var utils = require('speedt-utils'),
     colors = require('colors');
 
-var app = require('../../');
+var speedt = require('../../');
 
 process.on('uncaughtException', function (err){
 	console.error(err.stack.red);
@@ -20,17 +20,17 @@ process.on('exit', function (code){
 	console.error('[ERROR] [%s] process exit with code: %s.', utils.format(), code);
 });
 
-app.createApp(null, function(){
+speedt.createApp(null, function(){
 	var self = this;
 
 	self.configure('production|development', function(){
-		self.filter(app.filters.time());
-		self.filter(app.filters.timeout());
+		self.filter(speedt.filters.time());
+		self.filter(speedt.filters.timeout());
 	});
 
 	self.configure('production|development', 'connector', function(){
-		app.set('', {
-			connector : app.connectors.hyxconnector,
+		speedt.set('', {
+			connector : speedt.connectors.hyxconnector,
 			heartbeat : 3,
 			useDict : true,
 			useProtobuf : true
