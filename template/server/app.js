@@ -37,6 +37,10 @@ speedt.createApp(null, function(){
 		}); // END
 	}); // END
 
+	self.configure('production|development', 'connection', function(){
+		this.set('connectionConfig', { maxConnections : 2 });
+	}); // END
+
 	// TODO
 	self.start(function (err){
 		if(err) return console.error('[%s] app start error: %j.'.red, utils.format(), err.message);
