@@ -15,9 +15,9 @@ process.on('uncaughtException', function (err){
 });
 
 process.on('exit', function (code){
-	if(0 === code) return console.warn('[%s] process exit.'.yellow, utils.format());
+	if(0 === code) return console.warn('[%s] process exit'.yellow, utils.format());
 	// TODO
-	console.error('[%s] process exit with code: %s.'.red, utils.format(), code);
+	console.error('[%s] process exit with code: %s'.red, utils.format(), code);
 });
 
 speedt.createApp(null, function(){
@@ -30,19 +30,19 @@ speedt.createApp(null, function(){
 
 	self.configure('production|development', 'connector', function(){
 		this.set('connectorConfig', {
-			connector : speedt.connectors.hyxconnector,
-			heartbeat : 3,
-			useDict : true,
-			useProtobuf : true
+			connector: speedt.connectors.hyxconnector,
+			heartbeat: 3,
+			useDict: true,
+			useProtobuf: true
 		}); // END
 	}); // END
 
 	self.configure('production|development', function(){
-		this.set('connectionConfig', { maxConnections : 2 });
+		this.set('connectionConfig', { maxConnections: 2 });
 	}); // END
 
 	// TODO
 	self.start(function (err){
-		if(err) return console.error('[%s] app start error: %j.'.red, utils.format(), err.message);
+		if(err) return console.error('[%s] app start error: %j'.red, utils.format(), err.message);
 	});
 });
