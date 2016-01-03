@@ -43,6 +43,6 @@ speedt.createApp(null, function(){
 
 	// TODO
 	self.start(function (err){
-		if(err) return console.error('[%s] app start error: %j'.red, utils.format(), err.message);
+		if(err) return console.error('[%s] app start error: %j'.red, utils.format(), err.stack);
 	});
 });
