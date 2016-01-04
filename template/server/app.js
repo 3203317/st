@@ -11,7 +11,7 @@ var utils = require('speedt-utils'),
 var speedt = require('../../');
 
 process.on('uncaughtException', function (err){
-	console.error(err.stack.red);
+	console.error(err);
 });
 
 process.on('exit', function (code){
