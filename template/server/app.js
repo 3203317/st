@@ -33,12 +33,15 @@ speedt.createApp(null, function(){
 			connector: speedt.connectors.hyxconnector,
 			heartbeat: 3,
 			useDict: true,
-			useProtobuf: true
+			useProtobuf: true,
+			blacklistFilter: function(socket, cb){
+				cb(socket, true);
+			}
 		}); // END
 	}); // END
 
 	self.configure('production|development', function(){
-		this.set('connectionConfig', { maxConnections: 2 });
+		this.set('connectionConfig', { maxConnections: 0 });
 	}); // END
 
 	// TODO
