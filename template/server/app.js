@@ -34,8 +34,8 @@ speedt.createApp(null, function(){
 			heartbeat: 3,
 			useDict: true,
 			useProtobuf: true,
-			blacklistFilter: function(socket, cb){
-				cb(socket, true);
+			blacklistFilter: function(ip, cb){
+				cb(!1);
 			}
 		}); // END
 	}); // END
