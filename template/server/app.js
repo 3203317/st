@@ -35,7 +35,7 @@ speedt.createApp(null, function(){
 			useDict: true,
 			useProtobuf: true,
 			blacklistFilter: function(ip, cb){
-				cb(!1);
+				cb(!0);
 			}
 		}); // END
 	}); // END
