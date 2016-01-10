@@ -41,7 +41,7 @@ speedt.createApp(null, function(){
 	}); // END
 
 	self.configure('production|development', function(){
-		this.set('connectionConfig', { maxConnections: 1 });
+		this.set('connectionConfig', { maxConnections: 2 });
 	}); // END
 
 	// TODO
