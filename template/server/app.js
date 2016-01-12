@@ -34,6 +34,7 @@ speedt.createApp(null, function(){
 			heartbeat: 3,
 			useDict: true,
 			useProtobuf: true,
+			noDelay: true,
 			blacklistFilter: function(host, cb){
 				cb(!0);
 			}
