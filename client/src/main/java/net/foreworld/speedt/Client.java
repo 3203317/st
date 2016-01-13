@@ -1,10 +1,9 @@
-package net.foreworld.speedt.client;
+package net.foreworld.speedt;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Logger;
 
-import net.foreworld.speedt.server.Server;
 import net.foreworld.speedt.transport.Reader;
 import net.foreworld.speedt.transport.Writer;
 import net.foreworld.speedt.utils.DoWorkHandler;

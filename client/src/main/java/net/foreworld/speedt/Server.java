@@ -1,4 +1,4 @@
-package net.foreworld.speedt.server;
+package net.foreworld.speedt;
 
 /**
  *
