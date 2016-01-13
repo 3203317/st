@@ -9,7 +9,7 @@ import net.foreworld.speedt.server.Server;
  */
 public class MyServer extends Server {
 
-	public MyServer(String ip, int port) {
-		super(ip, port);
+	public MyServer(int port, String host) {
+		super(port, host);
 	}
 }

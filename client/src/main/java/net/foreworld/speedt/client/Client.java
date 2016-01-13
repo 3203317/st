@@ -26,12 +26,11 @@ public abstract class Client {
 	}
 
 	public void connect(Server server, DoWorkHandler<Void> handler) {
-		logger.info("connect remote socket " + server.getIp() + ":"
+		logger.info("connect remote socket " + server.getPort() + ":"
 				+ server.getPort());
 		this.server = server;
-
 		try {
-			socket = new Socket(server.getIp(), server.getPort());
+			socket = new Socket(server.getHost(), server.getPort());
 			socket.setTcpNoDelay(server.isNoDelay()); // disable Nagle algorithm
 			reader = new Reader(socket.getInputStream());
 			writer = new Writer(socket.getOutputStream());
