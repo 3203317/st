@@ -2,6 +2,7 @@ package net.foreworld.speedt;
 
 import java.util.logging.Logger;
 
+import net.foreworld.speedt.model.User;
 import net.foreworld.speedt.utils.DoWorkHandler;
 
 /**
@@ -40,17 +41,23 @@ public class TestTask implements Runnable {
 	}
 
 	private void login() {
-		client.request("login", "", new DoWorkHandler<Object>() {
-			@Override
-			public void success(Object o) {
-				System.out.println(o);
-			}
+		User user = new User();
+		user.setUserName("portal");
+		user.setUserPass("123456");
 
-			@Override
-			public void failure(Throwable e) {
-				e.printStackTrace();
-				logger.warning(e.getMessage());
-			}
-		});
+		// TODO
+		client.request("connector.entryHandler.entry", user,
+				new DoWorkHandler<Object>() {
+					@Override
+					public void success(Object o) {
+						System.out.println(o);
+					}
+
+					@Override
+					public void failure(Throwable e) {
+						e.printStackTrace();
+						logger.warning(e.getMessage());
+					}
+				});
 	}
 }

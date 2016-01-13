@@ -48,6 +48,7 @@ public class Client {
 	}
 
 	public void request(String route, Object o, DoWorkHandler<Object> handler) {
+		System.out.println(o);
 		handler.success(null);
 	}
 
