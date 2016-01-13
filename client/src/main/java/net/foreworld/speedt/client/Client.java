@@ -14,7 +14,7 @@ import net.foreworld.speedt.utils.DoWorkHandler;
  * @author huangxin (3203317@qq.com)
  *
  */
-public abstract class Client {
+public class Client {
 	private final Logger logger;
 	private Server server;
 	private Socket socket;
@@ -45,6 +45,14 @@ public abstract class Client {
 			handler.failure(e);
 			return;
 		}
+		handler.success(null);
+	}
+
+	public void request(String route, Object o, DoWorkHandler<Object> handler) {
+		handler.success(null);
+	}
+
+	public void close(DoWorkHandler<Void> handler) {
 		handler.success(null);
 	}
 }

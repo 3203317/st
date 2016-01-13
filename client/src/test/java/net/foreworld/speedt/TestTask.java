@@ -2,6 +2,7 @@ package net.foreworld.speedt;
 
 import java.util.logging.Logger;
 
+import net.foreworld.speedt.client.Client;
 import net.foreworld.speedt.server.Server;
 import net.foreworld.speedt.utils.DoWorkHandler;
 
@@ -14,7 +15,7 @@ public class TestTask implements Runnable {
 
 	private final Logger logger;
 	private Server server;
-	private MyClient client;
+	private Client client;
 
 	public TestTask() {
 		logger = Logger.getLogger(getClass().getName());
@@ -22,10 +23,10 @@ public class TestTask implements Runnable {
 
 	@Override
 	public void run() {
-		server = new MyServer(5005, "127.0.0.1");
+		server = new Server(5005, "127.0.0.1");
 		server.setNoDelay(true);
 
-		client = new MyClient();
+		client = new Client();
 		client.connect(server, new DoWorkHandler<Void>() {
 			@Override
 			public void success(Void v) {
@@ -41,10 +42,10 @@ public class TestTask implements Runnable {
 	}
 
 	private void login() {
-		client.login("", "", new DoWorkHandler<Boolean>() {
+		client.request("login", "", new DoWorkHandler<Object>() {
 			@Override
-			public void success(Boolean v) {
-				System.out.println(v);
+			public void success(Object o) {
+				System.out.println(o);
 			}
 
 			@Override

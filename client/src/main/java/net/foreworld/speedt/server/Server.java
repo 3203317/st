@@ -5,7 +5,7 @@ package net.foreworld.speedt.server;
  * @author huangxin (3203317@qq.com)
  *
  */
-public abstract class Server {
+public class Server {
 	private int port;
 	private String host;
 	private boolean noDelay;
@@ -28,6 +28,7 @@ public abstract class Server {
 
 	public Server(int port, String host) {
 		this.port = port;
+		this.host = host;
 	}
 
 	public int getPort() {

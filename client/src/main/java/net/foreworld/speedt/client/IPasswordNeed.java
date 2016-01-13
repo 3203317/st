@@ -6,7 +6,5 @@ package net.foreworld.speedt.client;
  *
  */
 public interface IPasswordNeed {
-	String getUsername();
-
 	String getPassword();
 }
