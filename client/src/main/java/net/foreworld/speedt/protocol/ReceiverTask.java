@@ -23,4 +23,8 @@ public class ReceiverTask implements Runnable {
 			// TODO
 		}
 	}
+
+	public void stopTask() {
+		isRunning = false;
+	}
 }
