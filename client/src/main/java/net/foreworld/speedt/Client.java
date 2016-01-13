@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Logger;
 
-import net.foreworld.speedt.protocol.ReceiverTask;
 import net.foreworld.speedt.transport.Reader;
 import net.foreworld.speedt.transport.Writer;
 import net.foreworld.speedt.utils.DoWorkHandler;
@@ -16,7 +15,6 @@ import net.foreworld.speedt.utils.DoWorkHandler;
  */
 public class Client {
 	private final Logger logger;
-	private Server server;
 	private Socket socket;
 	private Reader reader;
 	private Writer writer;
@@ -28,16 +26,11 @@ public class Client {
 	public void connect(Server server, DoWorkHandler<Void> handler) {
 		logger.info("connect remote socket " + server.getPort() + ":"
 				+ server.getPort());
-		this.server = server;
 		try {
 			socket = new Socket(server.getHost(), server.getPort());
 			socket.setTcpNoDelay(server.isNoDelay()); // disable Nagle algorithm
 			reader = new Reader(socket.getInputStream());
 			writer = new Writer(socket.getOutputStream());
-
-			ReceiverTask receiverTask = new ReceiverTask(reader);
-			Thread receiverThread = new Thread(receiverTask, "receiverThread");
-			receiverThread.start();
 		} catch (Exception e) {
 			if (null != socket) {
 				try {
@@ -53,9 +46,7 @@ public class Client {
 	}
 
 	public void request(String route, Object o, DoWorkHandler<Object> handler) {
-		byte[] bytes = { 1, 2, 3 };
-		writer.write(bytes);
-		System.out.println(o);
+		logger.info(route);
 		handler.success(null);
 	}
 

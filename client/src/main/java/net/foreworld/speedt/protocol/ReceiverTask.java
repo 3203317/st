@@ -11,9 +11,11 @@ public class ReceiverTask implements Runnable {
 
 	private final Reader reader;
 	private volatile boolean isRunning = false;
+	private final ProtocolContext context;
 
-	public ReceiverTask(Reader reader) {
+	public ReceiverTask(Reader reader, ProtocolContext context) {
 		this.reader = reader;
+		this.context = context;
 	}
 
 	@Override

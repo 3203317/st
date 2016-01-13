@@ -11,9 +11,11 @@ public class SenderTask implements Runnable {
 
 	private final Writer writer;
 	private volatile boolean isRunning = false;
+	private final ProtocolContext context;
 
-	public SenderTask(Writer writer) {
+	public SenderTask(Writer writer, ProtocolContext context) {
 		this.writer = writer;
+		this.context = context;
 	}
 
 	@Override
@@ -22,5 +24,9 @@ public class SenderTask implements Runnable {
 		while (isRunning) {
 			// TODO
 		}
+	}
+
+	public void stopTask() {
+		isRunning = false;
 	}
 }
