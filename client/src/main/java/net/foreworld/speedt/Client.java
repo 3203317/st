@@ -31,6 +31,8 @@ public class Client {
 		try {
 			socket = new Socket(server.getHost(), server.getPort());
 			socket.setTcpNoDelay(server.isNoDelay()); // disable Nagle algorithm
+			socket.setKeepAlive(server.isKeepAlive());
+			socket.setSoTimeout(server.getTimeout());
 			reader = new Reader(socket.getInputStream());
 			writer = new Writer(socket.getOutputStream());
 			// TODO

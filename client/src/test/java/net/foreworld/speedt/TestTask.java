@@ -24,6 +24,8 @@ public class TestTask implements Runnable {
 	public void run() {
 		server = new Server(5005, "127.0.0.1");
 		server.setNoDelay(true);
+		server.setKeepAlive(true);
+		server.setTimeout(2);
 		// TODO
 		client = new Client();
 		client.connect(server, new DoWorkHandler<Void>() {
