@@ -26,7 +26,7 @@ public class Client {
 	}
 
 	public void connect(Server server, DoWorkHandler<Void> handler) {
-		logger.info("connect remote socket " + server.getPort() + ":"
+		logger.info("connect remote socket " + server.getHost() + ":"
 				+ server.getPort());
 		try {
 			socket = new Socket(server.getHost(), server.getPort());
