@@ -23,11 +23,11 @@ public class Protocol implements ProtocolContext {
 
 	public void start() {
 		receiverTask = new ReceiverTask(reader, this);
-		receiverThread = new Thread(receiverTask, "receiverThread");
+		receiverThread = new Thread(receiverTask, "SpeedTSeceiverThread");
 		receiverThread.start();
 		// TODO
 		senderTask = new SenderTask(writer, this);
-		senderThread = new Thread(senderTask, "senderTask");
+		senderThread = new Thread(senderTask, "SpeedTSenderTask");
 		senderThread.start();
 	}
 

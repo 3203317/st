@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+import net.foreworld.speedt.protocol.Protocol;
 import net.foreworld.speedt.transport.Reader;
 import net.foreworld.speedt.transport.Writer;
 import net.foreworld.speedt.utils.DoWorkHandler;
@@ -18,6 +19,7 @@ public class Client {
 	private Socket socket;
 	private Reader reader;
 	private Writer writer;
+	private Protocol protocol;
 
 	public Client() {
 		logger = Logger.getLogger(getClass().getName());
@@ -31,6 +33,9 @@ public class Client {
 			socket.setTcpNoDelay(server.isNoDelay()); // disable Nagle algorithm
 			reader = new Reader(socket.getInputStream());
 			writer = new Writer(socket.getOutputStream());
+			// TODO
+			protocol = new Protocol(reader, writer);
+			protocol.start();
 		} catch (Exception e) {
 			if (null != socket) {
 				try {
@@ -51,6 +56,8 @@ public class Client {
 	}
 
 	public void close(DoWorkHandler<Void> handler) {
+		if (null != protocol)
+			protocol.cleanUpSession();
 		handler.success(null);
 	}
 }
