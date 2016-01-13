@@ -2,9 +2,7 @@ package net.foreworld.speedt;
 
 import java.util.logging.Logger;
 
-import net.foreworld.speedt.client.Connector;
-import net.foreworld.speedt.client.IPasswordNeed;
-import net.foreworld.speedt.server.NwServer;
+import net.foreworld.speedt.client.Client;
 import net.foreworld.speedt.server.Server;
 import net.foreworld.speedt.utils.DoWorkHandler;
 
@@ -16,7 +14,6 @@ import net.foreworld.speedt.utils.DoWorkHandler;
 public class TestTask implements Runnable {
 
 	private final Logger logger;
-	private Connector connector;
 	private Server server;
 
 	public TestTask() {
@@ -25,13 +22,14 @@ public class TestTask implements Runnable {
 
 	@Override
 	public void run() {
-		server = new NwServer("127.0.0.1", 5005, "hx", "123222");
+		server = new MyServer("127.0.0.1", 5005);
 		server.setNoDelay(true);
-		connector = new Connector(server);
-		connector.connect(new DoWorkHandler<Void>() {
+
+		Client client = new MyClient();
+		client.connect(server, new DoWorkHandler<Void>() {
 			@Override
 			public void success(Void v) {
-				connect();
+				login();
 			}
 
 			@Override
@@ -42,21 +40,10 @@ public class TestTask implements Runnable {
 		});
 	}
 
-	private void connect() {
+	private void login() {
+		System.out.println("login");
 		while (true) {
-			// TODO
-		}
-	}
 
-	private class PasswordChooser implements IPasswordNeed {
-		@Override
-		public String getPassword() {
-			return server.getPassword();
-		}
-
-		@Override
-		public String getUsername() {
-			return server.getUsername();
 		}
 	}
 }

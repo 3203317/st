@@ -14,21 +14,22 @@ import net.foreworld.speedt.utils.DoWorkHandler;
  * @author huangxin (3203317@qq.com)
  *
  */
-public class Connector {
+public abstract class Client {
 	private final Logger logger;
 	private Server server;
 	private Socket socket;
 	private Reader reader;
 	private Writer writer;
 
-	public Connector(Server server) {
+	public Client() {
 		logger = Logger.getLogger(getClass().getName());
-		this.server = server;
 	}
 
-	public void connect(DoWorkHandler<Void> handler) {
+	public void connect(Server server, DoWorkHandler<Void> handler) {
 		logger.info("connect remote socket " + server.getIp() + ":"
 				+ server.getPort());
+		this.server = server;
+
 		try {
 			socket = new Socket(server.getIp(), server.getPort());
 			socket.setTcpNoDelay(server.isNoDelay()); // disable Nagle algorithm

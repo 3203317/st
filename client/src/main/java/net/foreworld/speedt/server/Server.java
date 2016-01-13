@@ -31,11 +31,9 @@ public abstract class Server {
 		this.username = username;
 	}
 
-	public Server(String ip, int port, String username, String password) {
+	public Server(String ip, int port) {
 		this.ip = ip;
 		this.port = port;
-		this.username = username;
-		this.password = password;
 	}
 
 	public String getIp() {
