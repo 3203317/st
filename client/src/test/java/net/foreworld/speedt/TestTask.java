@@ -44,8 +44,8 @@ public class TestTask implements Runnable {
 
 	private void login() {
 		User user = new User();
-		user.setUserName("portal");
-		user.setUserPass("123456");
+		user.setUsername("portal");
+		user.setPassword("123456");
 		// TODO
 		client.request("connector.entryHandler.entry", user,
 				new DoWorkHandler<Object>() {

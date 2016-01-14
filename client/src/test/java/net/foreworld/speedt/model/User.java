@@ -10,22 +10,26 @@ import java.io.Serializable;
 public class User implements Serializable {
 	private static final long serialVersionUID = 5453275759560456521L;
 
-	private String userName;
-	private String userPass;
+	private String username;
+	private String password;
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getUserPass() {
-		return userPass;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUserPass(String userPass) {
-		this.userPass = userPass;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String toString() {
+		return "username=" + username + "&password=" + password;
 	}
 }

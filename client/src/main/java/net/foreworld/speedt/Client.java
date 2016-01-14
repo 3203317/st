@@ -54,6 +54,7 @@ public class Client {
 
 	public void request(String route, Object o, DoWorkHandler<Object> handler) {
 		logger.info(route);
+		logger.info(o.toString());
 		handler.success(null);
 	}
 
