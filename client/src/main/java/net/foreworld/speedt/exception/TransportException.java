@@ -6,13 +6,13 @@ package net.foreworld.speedt.exception;
  *
  */
 @SuppressWarnings("serial")
-public class TransportException extends RuntimeException {
+public class TransportException extends Exception {
 
-	public TransportException(String message, Throwable e) {
-		super(message, e);
+	public TransportException(String message, Throwable exception) {
+		super(message, exception);
 	}
 
-	public TransportException(Throwable e) {
-		super(e);
+	public TransportException(Throwable exception) {
+		super(exception);
 	}
 }

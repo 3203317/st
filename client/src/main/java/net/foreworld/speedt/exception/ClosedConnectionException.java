@@ -8,7 +8,7 @@ package net.foreworld.speedt.exception;
 @SuppressWarnings("serial")
 public class ClosedConnectionException extends TransportException {
 
-	public ClosedConnectionException(Throwable e) {
-		super(e);
+	public ClosedConnectionException(Throwable exception) {
+		super(exception);
 	}
 }

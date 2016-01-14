@@ -60,6 +60,13 @@ public class Client {
 	public void close(DoWorkHandler<Void> handler) {
 		if (null != protocol)
 			protocol.cleanUpSession();
+		if (null != socket) {
+			try {
+				socket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		handler.success(null);
 	}
 }
