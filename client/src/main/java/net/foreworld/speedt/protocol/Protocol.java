@@ -1,5 +1,9 @@
 package net.foreworld.speedt.protocol;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
+
 import net.foreworld.speedt.transport.Reader;
 import net.foreworld.speedt.transport.Writer;
 
@@ -16,9 +20,12 @@ public class Protocol implements ProtocolContext {
 	private SenderTask senderTask;
 	private ReceiverTask receiverTask;
 
+	private final BlockingQueue<ClientToServerMessage> queue;
+
 	public Protocol(Reader reader, Writer writer) {
 		this.reader = reader;
 		this.writer = writer;
+		queue = new LinkedBlockingQueue<ClientToServerMessage>();
 	}
 
 	public void start() {
@@ -54,5 +61,16 @@ public class Protocol implements ProtocolContext {
 			}
 			receiverTask = null;
 		}
+	}
+
+	@Override
+	public void putClientToServerMessage(ClientToServerMessage message) {
+		queue.offer(message);
+	}
+
+	@Override
+	public ClientToServerMessage getClientToServerMessage()
+			throws InterruptedException {
+		return queue.poll(1, TimeUnit.SECONDS);
 	}
 }

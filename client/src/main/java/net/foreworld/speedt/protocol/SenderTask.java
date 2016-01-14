@@ -22,7 +22,24 @@ public class SenderTask implements Runnable {
 	public void run() {
 		isRunning = true;
 		while (isRunning) {
-			// TODO
+			try {
+				ClientToServerMessage message = context
+						.getClientToServerMessage();
+				if (null == message)
+					return;
+				// TODO
+				byte[] b = message.getRoute().getBytes();
+				writer.write(b);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				if (isRunning)
+					context.cleanUpSession();
+				stopTask();
+			} catch (Exception e) {
+				if (isRunning)
+					context.cleanUpSession();
+				stopTask();
+			}
 		}
 	}
 

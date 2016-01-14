@@ -7,4 +7,9 @@ package net.foreworld.speedt.protocol;
  */
 public interface ProtocolContext {
 	void cleanUpSession();
+
+	void putClientToServerMessage(ClientToServerMessage message);
+
+	ClientToServerMessage getClientToServerMessage()
+			throws InterruptedException;
 }

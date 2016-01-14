@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+import net.foreworld.speedt.protocol.ClientToServerMessage;
 import net.foreworld.speedt.protocol.Protocol;
 import net.foreworld.speedt.transport.Reader;
 import net.foreworld.speedt.transport.Writer;
@@ -53,8 +54,11 @@ public class Client {
 	}
 
 	public void request(String route, Object o, DoWorkHandler<Object> handler) {
-		logger.info(route);
-		logger.info(o.toString());
+		ClientToServerMessage message = new ClientToServerMessage();
+		message.setRoute(route);
+		message.setData(o.toString());
+		// TODO
+		protocol.putClientToServerMessage(message);
 		handler.success(null);
 	}
 
