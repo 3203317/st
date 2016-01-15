@@ -26,10 +26,11 @@ public class SenderTask implements Runnable {
 				ClientToServerMessage message = context
 						.getClientToServerMessage();
 				if (null == message)
-					return;
+					break;
 				// TODO
 				byte[] b = message.getRoute().getBytes();
 				writer.write(b);
+				writer.flush();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				if (isRunning)
